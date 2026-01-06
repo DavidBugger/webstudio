@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="favGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon Frame -->
+  <rect x="15" y="15" width="90" height="90" rx="16"
+        fill="none"
+        stroke="url(#favGradient)"
+        stroke-width="12"/>
+
+  <!-- Inner Frame Accent -->
+  <rect x="37" y="37" width="46" height="46" rx="8"
+        fill="url(#favGradient)" opacity="0.4"/>
+</svg>

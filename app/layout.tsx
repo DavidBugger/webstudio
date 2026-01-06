@@ -13,8 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WebStudio - Websites That Convert",
-  description: "Professional websites for small businesses and startups",
+  title: "Clearframe Studio - Websites That Turn Visitors Into Customers",
+  description: "We design clean, high-performing websites for small businesses and startups.",
+  icons: {
+    icon: "/favicon-icon.svg",
+    shortcut: "/favicon-icon.svg",
+    apple: "/favicon-icon.svg",
+  },
 };
 
 export default function RootLayout({

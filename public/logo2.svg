@@ -1,0 +1,41 @@
+<svg width="600" height="160" viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#F5F5F5"/>
+
+  <!-- Outer Frame Icon -->
+  <rect x="30" y="30" width="90" height="90" rx="10"
+        fill="none"
+        stroke="url(#cfAccent)"
+        stroke-width="6"/>
+
+  <!-- Inner Frame -->
+  <rect x="52" y="52" width="46" height="46" rx="6"
+        fill="url(#cfAccent)"
+        opacity="0.18"/>
+
+  <!-- Brand Name -->
+  <text x="150" y="78"
+        font-family="Inter, Poppins, Segoe UI, sans-serif"
+        font-size="40"
+        font-weight="700"
+        fill="#111827">
+    Clearframe
+  </text>
+
+  <!-- Studio Label -->
+  <text x="152" y="110"
+        font-family="Inter, Poppins, Segoe UI, sans-serif"
+        font-size="18"
+        letter-spacing="3"
+        font-weight="600"
+        fill="#1E40AF">
+    STUDIO
+  </text>
+</svg>

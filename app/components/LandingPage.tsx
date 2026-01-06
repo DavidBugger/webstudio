@@ -2,11 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Check, Zap, Smartphone, TrendingUp, Clock, Globe, Code, Star, MessageSquare, DollarSign, Palette, X } from 'lucide-react';
+import { ArrowRight, Check, Zap, Smartphone, TrendingUp, Clock, Globe, Code, Star, MessageSquare, DollarSign, Palette, X, ArrowUp } from 'lucide-react';
 
 export default function LandingPage() {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
     const [isBookingOpen, setIsBookingOpen] = useState(false);
+    const [showScrollTop, setShowScrollTop] = useState(false);
 
     // Close modal on escape key
     useEffect(() => {
@@ -25,6 +26,23 @@ export default function LandingPage() {
             document.body.style.overflow = 'unset';
         }
     }, [isBookingOpen]);
+
+    // Handle scroll to top visibility
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 500) {
+                setShowScrollTop(true);
+            } else {
+                setShowScrollTop(false);
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     const faqs = [
         {
@@ -124,9 +142,8 @@ export default function LandingPage() {
             {/* Navigation */}
             <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 z-50">
                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                        <Image src="/logo.svg" alt="WebStudio Logo" width={52} height={52} className="w-15 h-15 object-contain" />
-                        {/* WebStudio */}
+                    <div className="flex items-center">
+                        <Image src="/logo1.svg" alt="Clearframe Studio Logo" width={180} height={48} className="h-10 w-auto object-contain" priority />
                     </div>
                     <button
                         onClick={() => setIsBookingOpen(true)}
@@ -663,12 +680,11 @@ export default function LandingPage() {
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                         <div className="md:col-span-2">
-                            <div className="flex items-center gap-2 text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">
-                                <Image src="/logo.svg" alt="WebStudio Logo" width={40} height={40} className="w-10 h-10 object-contain" />
-                                WebStudio
+                            <div className="flex items-center mb-4">
+                                <Image src="/logo1.svg" alt="Clearframe Studio Logo" width={220} height={60} className="h-12 w-auto object-contain" />
                             </div>
                             <p className="text-slate-400 mb-4">Building high-performing websites for ambitious businesses worldwide.</p>
-                            <p className="text-sm text-slate-500">Built with modern tools: React, Next.js, Tailwind CSS</p>
+                            {/* <p className="text-sm text-slate-500">Built with modern tools: React, Next.js, Tailwind CSS</p> */}
                         </div>
                         <div>
                             <h4 className="font-semibold mb-4 text-cyan-300">Services</h4>
@@ -682,14 +698,28 @@ export default function LandingPage() {
                         <div>
                             <h4 className="font-semibold mb-4 text-cyan-300">Contact</h4>
                             <ul className="space-y-2 text-slate-400">
-                                <li>hello@webstudio.com</li>
-                                <li>Schedule a call</li>
-                                <li>View portfolio</li>
+                                <li>hello@clearframestudio.biz</li>
+                                <li
+                                    onClick={() => setIsBookingOpen(true)}
+                                    className="hover:text-cyan-300 cursor-pointer transition-colors"
+                                >
+                                    Schedule a call
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://portfolio-gold-zeta-32.vercel.app/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-cyan-300 transition-colors"
+                                    >
+                                        View portfolio
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div className="border-t border-slate-800 pt-8 text-center text-slate-400 text-sm">
-                        <p>© 2026 WebStudio. All rights reserved.</p>
+                        <p>© 2026 Clearframe Studio. All rights reserved.</p>
                     </div>
                 </div>
             </footer>
@@ -750,6 +780,22 @@ export default function LandingPage() {
                             </div>
                         </motion.div>
                     </div>
+                )}
+            </AnimatePresence>
+
+            {/* Back to Top Button */}
+            <AnimatePresence>
+                {showScrollTop && (
+                    <motion.button
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                        onClick={scrollToTop}
+                        className="fixed bottom-8 right-8 z-[60] bg-gradient-to-r from-blue-500 to-cyan-500 p-4 rounded-full shadow-2xl shadow-cyan-500/50 hover:from-blue-600 hover:to-cyan-600 transition-all text-white group"
+                        title="Back to Top"
+                    >
+                        <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
+                    </motion.button>
                 )}
             </AnimatePresence>
         </div>
